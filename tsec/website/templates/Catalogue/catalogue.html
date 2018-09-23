@@ -1,0 +1,155 @@
+
+{% extends 'website/base.html' %}
+
+
+{% block contents %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'catalogue.css' %}">
+
+<style>
+  body{
+background-color:#bababa;
+}
+</style>
+<script>
+
+(function ($) {
+    $(function () {
+
+        //initialize all modals           
+        $('.modal').modal();
+
+        //now you can open modal from code
+        $('#modal1').modal('open');
+
+        //or by click on trigger
+        $('.trigger-modal').modal();
+
+    }); // end of document re
+})(jQuery);
+
+
+</script>
+
+
+<script>
+
+//search codes
+function myFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    li = document.getElementsByClassName("sea");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByClassName("card-title")[0];
+        console.log(a)
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
+
+
+<div>
+
+  <nav>
+    <div class="nav-wrapper indigo">
+      <a href="#!" class="brand-logo center">Schemio</a>
+      <ul class="right hide-on-med-and-down" >
+        <li style="list-style-type: none;"><a href="{% url 'editprofile'%}">My Profile</a></li>
+        <li style="list-style-type: none;"><a href="{% url 'logoutuser' %}">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+
+
+  <center>
+
+    <div class="search_area">
+      <div class="container  card"  style="padding:4rem;">
+        <div class="search_bar" style="z-index:99">
+          <div class="wrap">
+              <div class="search">
+                <input type="text" class="searchTerm" placeholder="Search For Scheme" id="myInput" onkeyup="myFunction()">
+                <button type="submit" class="searchButton">
+                  <i class="fa fa-search"></i>
+                </button>
+              </div>
+          </div>
+      </div>
+      <br><br>
+        <h2 class="e_text"></h2>
+        <div class="row e_scheme">
+          
+        {% for id , id_item in schemes.items %}
+        
+            <div class="col s12 m4 mauto pag sea " data-toggle="modal"  >
+              <div class="card blue-grey">
+                <div class="card-content white-text">
+                  <span class="card-title">{{id_item.Title}}</span>
+                  <br>
+                  <span class="card-desc">{{id_item.Description}}</span>
+                  {% if id_item.eligible %}
+                      <i class="fa fa-check" aria-hidden="true" style="    font-size: 2.5rem;
+                      color: green;
+                      background-color: #f0f0f0;
+                      border-radius: 1.25rem;
+                      transform: translate(0%,36%);
+                      position: relative;"></i>
+                  {% endif %}
+                </div>
+                
+                <div class="card-action">
+                  <a href="#{{id}}" class="waves-effect waves-light btn modal-trigger">Know More</a>
+                </div>
+              </div>
+            </div>  
+
+            <div id="{{id}}" class="modal modal-fixed-footer" style="z-index:9999">
+              <div class="modal-content">
+                <h4>{{id_item.Title}}</h4>
+                <table class="schemes_css striped">
+                {{id_item.html|safe}}
+                </table>
+
+                <h5><b><u>Required Documents</u> : </b></h5>
+                <ul>
+                {% for doc in id_item.docs %}
+                  <li>{{doc|title}}</li>
+                {% endfor %}
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+              </div>
+              
+            </div>    
+
+        {% endfor %}
+        
+
+            
+            
+          
+        </div>
+      </div>
+    </div>
+      
+      
+    
+  
+  </center>
+  
+</div>
+
+{% for item in navigation %}
+        <li><a href="{{ item.href }}">{{ item.caption }}</a></li>
+{% endfor %}
+
+{% endblock %}
+ 

@@ -1,0 +1,164 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body{
+  background: #f2f2f2;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.search {
+  width: 100%;
+  position: relative
+
+}
+
+.searchTerm {
+  float: left;
+  width: 100%;
+  border: 3px solid #00B4CC;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  position: absolute;  
+  right: -50px;
+  width: 40px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 30%;
+  position: relative;
+  
+  
+  transform: translate(0%, 0%);
+}
+
+.search_bar{
+    transform: translate(0%, 0%);
+   
+}
+
+
+
+.e_scheme{
+    align:center;
+    margin: auto;
+    
+}
+.mauto{
+    margin: auto;
+}
+.container{
+    align: center;
+    margin-top: 2.5vw;
+    padding: 5vw;
+    padding-top: 0.5vw;
+}
+
+.search_area{
+    padding-top: 5vw;
+    margin-top: 0vw; 
+}
+
+.e_text{
+    font-size: 3vw;
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(89, 224, 48);
+
+
+
+}
+.green{
+    background-color: rgb(67, 207, 39);
+    border-radius: 2vw;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+}
+
+.card .card-title{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 2vw;
+    font-weight: bold;
+    margin-bottom: 0vw;
+    
+  }
+
+.card .card-content .card-title{
+    display: block;
+    line-height: 2.2vw;
+}
+
+.card-desc{
+    display: block;
+    position: relative;
+    transform: translate(0%, 5%);
+    margin-top: 0vw;
+}
+
+.card-content{
+    min-height: 18em;
+    max-height: 18em;
+}
+
+
+
+.schemes_css{
+    width: 100%;
+    font-size: 1vw;
+}
+
+.modal-content{
+    text-align:left;
+}
+
+ul {
+    padding-left: 2vw;
+}
+ul li{
+    list-style-type: disc;
+    padding-left: 1vw;
+}
+
+.pag{
+    transition: all 0.5s ease;
+}
+
+@media only screen and (max-width: 600px) {
+    .schemes_css{
+        width: 100%;
+        font-size: 12px;
+    }
+    .card-content{
+        min-height: 25vw;
+        max-height: 25vw;
+    }
+
+.card .card-title{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 0vw;
+    
+  }
+
+.card .card-content .card-title{
+    display: block;
+    line-height: 14px;
+}
+
+}

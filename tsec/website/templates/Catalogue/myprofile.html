@@ -1,0 +1,98 @@
+{% extends "website/base.html" %}
+
+{% block contents %}
+<style>
+body{
+    background-color: #263238;
+  }
+
+  nav ul a{
+        font-size: 1.5rem;
+        color: #0f0f0f;
+  }
+
+  .nav-wrapper{
+      background-color: #d5d5d5;
+      color: #0f0f0f;
+  }
+
+  nav .brand-logo{
+    color: #0f0f0f !important; 
+  }
+
+
+</style>
+
+
+<div class="navbar-fixed">
+        <nav>
+          <div class="nav-wrapper">
+            <a href="#!" class="brand-logo center">Schemio</a>
+            <ul class="right hide-on-med-and-down nvbl">
+              <li><a href="{% url 'index'%}">Home</a></li>
+              <li><a href="{% url 'logoutuser' %}">Logout</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <div class="container">
+            <!-- Page Content goes here -->
+            <div class = "card profcard">
+                <h5>Name : {{ firstname }} {{ lastname }}</h5>
+                <h5>Email: {{ email }} </h5>
+            </div>
+
+            <div class = "card profcard">
+                    <h5>Documents you have provided</h5>
+                    {% if documents %}
+                        {% for document in documents %}
+                            <h6>{{ document|title}}</h6>
+                         {% endfor %}
+                    {% else %}
+                        <p>None so far</p>
+                    {% endif %}   
+                    
+                </div>
+               
+
+           
+                <div class = "card profcard">
+                
+                    <h4>Add Document</h4>
+                    <p>Please select all that documents that you posses. It will help us assist you better.</p>
+                    <form action = "" method = "POST">
+                    {% csrf_token %}
+                    {% for doc in li %}
+                    <div style="margin:10px;">
+                         
+                           
+                            {% if chkd.forloop.counter0  == "True" %}
+                            
+                                <input type="checkbox" id="{{doc}}" name="checks" value="{{forloop.counter0}}"  checked/>
+                            {% else %}
+                                <input type="checkbox" id="{{doc}}" name="checks" value="{{forloop.counter0}}" />
+                            {% endif %}
+                            <label for="{{doc}}">{{doc|title}}</label>
+                     </div>    
+                     {% endfor %}  
+                    
+                
+                        
+
+                       
+                            
+               
+                    
+                    <button type = "submit" class="modal-close waves-effect waves-green btn">Add</button>
+                
+                </form>
+                </div>
+
+                <script>$(document).ready(function(){
+                        $('.modal').modal();
+                      });</script>
+
+
+    </div>
+{% endblock %}
