@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  web:
+    build: ./app
+    command: bash -c "cd app && python manage.py makemigrations && python manage.py migrate && python manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:8000"
+    container_name: schemio
+    env_file:
+      - app/tsec/.env
+    volumes:
+      - .:/schemio
+    ports:
+      - "8000:8000"

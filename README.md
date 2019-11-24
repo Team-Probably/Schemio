@@ -63,9 +63,15 @@
 
 * Install dependencies
 ```sh
+        $ cd app/
         $ pip3 install -r requirements.txt
 ```
 
+or using docker-compose
+
+```sh
+        $ docker-compose up
+```
 
 
 ------------------------------------------
