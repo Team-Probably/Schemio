@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=300px src="./Screenshot from 2018-09-22 09-35-49.png" alt="logo"></a>
+ <img width=300px src="./logo.png" alt="logo"></a>
 </p>
 
 <h3 align="center">Easy to use government portal for increased convenience of users</h3>
@@ -29,7 +29,7 @@
 
 <div align="center">
 
-<h3 > Schemio As Web-App  </h3>
+<h3> Schemio As Web-App  </h3>
 <br>
 <img src="./Login.gif" width=700px>
 
@@ -47,7 +47,7 @@
 
 - Support for multiple language.
 
-- Recommendation system based on submitted applications. 
+- Recommendation system based on submitted applications.
 
 ------------------------------------------
 ## File Structure
@@ -85,4 +85,4 @@
 - [@Korusuke](https://github.com/Korusuke)
 - [@RusherRG](https://github.com/RusherRG)
 - [@akshay-99](https://github.com/akshay-99)
-- [@aditya1999](https://github.com/aditya1999)
+- [@Syn3rman](https://github.com/Syn3rman)

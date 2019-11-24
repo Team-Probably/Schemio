@@ -51,4 +51,3 @@ data = {1000: {'Title': 'Pradhan Mantri Vaya Vandana Yojana', 'Description': 'Ba
 
 for i in final_data.keys():
     data[i]['html'] = final_data[i]['html']
-

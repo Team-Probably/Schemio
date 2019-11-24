@@ -7,6 +7,7 @@ from .models import Document
 from .forms import UploadFileForm
 
 import random
+import os
 from django.core.mail import send_mail
 from .database import data, certif, schreq
 
@@ -33,15 +34,15 @@ def loginuser(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             if user.is_active:
-                request.session.set_expiry(86400) #sets the exp. value of the session 
-                login(request, user) #the user is now logged in
+                request.session.set_expiry(86400) # sets the exp. value of the session
+                login(request, user) # the user is now logged in
                 # print('hi')
                 return redirect('index')
         else:
             print('error')
-           
+
             return render(request, 'website/login.html', {'loginerror': 'Login error!'})
-                
+
     return render(request, 'website/login.html' )
 
 def logoutuser(request):
@@ -69,16 +70,14 @@ def signup(request):
             'password': password
 
         }
-        
+
         # print('hi')
         rn = random.randint(1000, 9999)
         request.session['verifynum']= rn
-        message = """From:  Schemio karan.sheth@somaiya.edu
-            
-            Subject: Confirm Your Email
-
-            Enter the pin on the website.\n The pin is """+str(rn)+". "
-        send_mail('Confirm email', message, 'karan.sheth@somaiya.edu', [email])
+        message = """
+            Enter the pin on the website.\n Your unique super secret pin is """+str(rn)+". "
+        print(os.environ.get('email'))
+        send_mail('Confirm email', message, os.environ.get('email'), [email])
         return redirect('verify_email')
 
     return render(request, 'website/signup.html')
@@ -153,7 +152,7 @@ def editprofile(request):
             chkd[i]=True
     print(chkd)
     return render(request, 'Catalogue/myprofile.html', {'editprofile': True, 'firstname':request.user.first_name ,'lastname':request.user.last_name, 'email':request.user.email , 'li':certif, 'chkd':chkd, 'documents': addd})
-   
+
 def isEligible(schid, user):
     '''scheme = Scheme.objects.filter(name__exact = name)
     userdocs = user.doument_set.all()
@@ -162,7 +161,7 @@ def isEligible(schid, user):
     userdocl = []
     for e in userdocs:
         userdocl.append(e.name)
-    
+
     schemereq = schreq[schid - 994]
     # print(schemereq, userdocl)
     # print()
