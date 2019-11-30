@@ -2,6 +2,6 @@ selenium==3.14.0
 django==2.1.2
 beautifulsoup4==4.6.0
 Jinja2==2.10
-requests==2.18.4
+requests==2.20.0
 django-environ==0.4.5
 whitenoise
