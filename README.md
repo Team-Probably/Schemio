@@ -56,23 +56,31 @@
 
 #### Web-App
 
-- Repository [here](https://github.com/Korusuke/TSEC/tree/master/tsec)
+- Django app can be found inside [/app](https://github.com/Team-Probably/Schemio/tree/master/app)
 
 ------------------------------------------
-### Installation
+### Installation and Deployment
 
-* Install dependencies
-```sh
-        $ cd app/
-        $ pip3 install -r requirements.txt
-```
+Step 1:
+- Update the `app/tsec/.env.example` and rename it to `.env`
 
-or using docker-compose
+Setp 2:
+- Using docker-compose
 
 ```sh
         $ docker-compose up
 ```
 
+- Using python
+
+```sh
+        $ cd app/
+        $ pip3 install -r requirements.txt
+        $ python manage.py makemigrations
+        $ python manage.py migrate
+        $ python manage.py collectstatic --noinput
+        $ python manage.py runserver 0.0.0.0:8000
+```
 
 ------------------------------------------
 ### Contributing
